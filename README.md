@@ -1,4 +1,4 @@
-# Minhas finanças
+# Meu Dinheiro
 
 API de um aplicativo para controle de finanças pessoais.
 
