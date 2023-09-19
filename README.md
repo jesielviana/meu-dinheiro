@@ -37,6 +37,7 @@ Acesse o endereço http://localhost:3000/api/v1 para verificar se a API está fu
 - [Typescript](https://www.typescriptlang.org/) - Superset Javascript
 - [Prisma](https://www.prisma.io/) - ORM para Node.js e Typescript
 - [PostgreSQL](https://www.postgresql.org/) - Banco de dados relacional
+- [Tsoa](https://tsoa-community.github.io/docs/) - Criar APIs REST compatíveis com OpenAPI usando TypeScript e Node
 
 ## ✒️ Autores
 
