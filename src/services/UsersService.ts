@@ -1,20 +1,27 @@
 import { PrismaClient, User } from '@prisma/client';
+import { FieldErrors, ValidateError } from 'tsoa';
 import { UserDTO } from '../dto/UserDTO';
 
-class UserController {
+class UsersService {
   private prisma: PrismaClient;
   constructor() {
     this.prisma = new PrismaClient();
   }
 
-  async getAll() {
+  async getAll(): Promise<User[]> {
     return await this.prisma.user.findMany();
   }
 
   public async save(user: UserDTO): Promise<User> {
     const userExists = await this.findByEmail(user.email);
     if (userExists) {
-      throw new Error('User already exists');
+      const fields: FieldErrors = {
+        email: {
+          message: 'Email already exists',
+          value: user.email,
+        },
+      };
+      throw new ValidateError(fields, 'User already exists');
     }
     const userSaved = await this.prisma.user.create({
       data: user,
@@ -32,4 +39,4 @@ class UserController {
   }
 }
 
-export default UserController;
+export default UsersService;
